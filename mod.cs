@@ -27,9 +27,9 @@ package LiFxStarterkits
         %tableName = LiFxStarterkits::loottable();
         dbi.Update("DROP TABLE IF EXISTS `" @ %tableName @ "`");
 
-        %sqlTrigger = "CREATE TRIGGER `" @ %tableName @ "_trigger` BEFORE INSERT ON `movable_objects` " @
+        %sqlTrigger = "CREATE TRIGGER `" @ %tableName @ "_trigger` AFTER INSERT ON `containers` " @
                       "FOR EACH ROW BEGIN " @
-                      "INSERT INTO items SELECT NULL, new.RootContainerID, ItemObjectTypeID, Quality, Quantity, 100 AS Durability, 100 AS CreatedDurability, NULL FROM " @ %tableName @ " WHERE ContainerObjectTypeID = new.ObjectTypeID; END;";
+                      "INSERT INTO items SELECT NULL, new.ID, ItemObjectTypeID, Quality, Quantity, 100 AS Durability, 100 AS CreatedDurability, NULL FROM " @ %tableName @ " WHERE ContainerObjectTypeID = new.ObjectTypeID; END;";
 
         %sqlTable = "CREATE TABLE IF NOT EXISTS `" @ %tableName @ "` (\n";
         %sqlTable = %sqlTable @ "`ContainerObjectTypeID` INT(11) NOT NULL,\n";
