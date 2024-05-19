@@ -24,25 +24,25 @@ package LiFxStarterkits
     }
 
     function LiFxStarterkits::dbInit() {
-        % tableName = LiFxStarterkits::loottable();
-        dbi.Update("DROP TABLE IF EXISTS `" @ % tableName @ "`");
+        %tableName = LiFxStarterkits::loottable();
+        dbi.Update("DROP TABLE IF EXISTS `" @ %tableName @ "`");
 
-        % sqlTrigger = "CREATE TRIGGER `" @ % tableName @ "_trigger` BEFORE INSERT ON `movable_objects` " @
+        %sqlTrigger = "CREATE TRIGGER `" @ %tableName @ "_trigger` BEFORE INSERT ON `movable_objects` " @
                       "FOR EACH ROW BEGIN " @
-                      "INSERT INTO items SELECT NULL, new.RootContainerID, ItemObjectTypeID, Quality, Quantity, 100 AS Durability, 100 AS CreatedDurability, NULL FROM " @ % tableName @ " WHERE ContainerObjectTypeID = new.ObjectTypeID; END;";
+                      "INSERT INTO items SELECT NULL, new.RootContainerID, ItemObjectTypeID, Quality, Quantity, 100 AS Durability, 100 AS CreatedDurability, NULL FROM " @ %tableName @ " WHERE ContainerObjectTypeID = new.ObjectTypeID; END;";
 
-        % sqlTable = "CREATE TABLE IF NOT EXISTS `" @ % tableName @ "` (\n";
-        % sqlTable = % sqlTable @ "`ContainerObjectTypeID` INT(11) NOT NULL,\n";
-        % sqlTable = % sqlTable @ "`ItemObjectTypeID` INT(11) NOT NULL,\n";
-        % sqlTable = % sqlTable @ "`Quality` INT(11) NOT NULL,\n";
-        % sqlTable = % sqlTable @ "`Quantity` INT(11) NOT NULL\n";
-        % sqlTable = % sqlTable @ ")\n";
-        % sqlTable = % sqlTable @ "COLLATE='utf8mb3_unicode_ci'\n";
-        % sqlTable = % sqlTable @ "ENGINE=InnoDB;\n";
+        %sqlTable = "CREATE TABLE IF NOT EXISTS `" @ %tableName @ "` (\n";
+        %sqlTable = %sqlTable @ "`ContainerObjectTypeID` INT(11) NOT NULL,\n";
+        %sqlTable = %sqlTable @ "`ItemObjectTypeID` INT(11) NOT NULL,\n";
+        %sqlTable = %sqlTable @ "`Quality` INT(11) NOT NULL,\n";
+        %sqlTable = %sqlTable @ "`Quantity` INT(11) NOT NULL\n";
+        %sqlTable = %sqlTable @ ")\n";
+        %sqlTable = %sqlTable @ "COLLATE='utf8mb3_unicode_ci'\n";
+        %sqlTable = %sqlTable @ "ENGINE=InnoDB;\n";
 
-        dbi.Update("DROP TRIGGER IF EXISTS `" @ % tableName @ "_trigger`"); // Drop trigger to ensure we have the updated ones at all times
-        dbi.Update(% sqlTrigger); // Insert trigger
-        dbi.Update(% sqlTable); // Create the table if it does not exist
+        dbi.Update("DROP TRIGGER IF EXISTS `" @ %tableName @ "_trigger`"); // Drop trigger to ensure we have the updated ones at all times
+        dbi.Update(%sqlTrigger); // Insert trigger
+        dbi.Update(%sqlTable); // Create the table if it does not exist
 
         echo("Loot table and trigger initialized successfully.");
     }
