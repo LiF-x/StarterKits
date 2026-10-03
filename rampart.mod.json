@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "StarterKits",
-  "name": "LiFx StarterKits",
+  "name": "StarterKits",
   "version": "1.0.0",
   "description": "Starter kit customisation: spawns a configured set of items into storage containers as they are created.",
   "authors": ["Christophe Roblin"],
@@ -13,8 +13,8 @@
   "loadOrderHint": 100,
   "files": {
     "overlay": [
-      { "src": "mod.cs", "dest": "mods/StarterKits/mod.cs" },
-      { "src": "starterkitsTable.cs", "dest": "mods/StarterKits/starterkitsTable.cs" }
+      { "src": "mod.cs",                "dest": "mods/StarterKits/mod.cs" },
+      { "src": "starterkitsTable.cs",   "dest": "mods/StarterKits/starterkitsTable.cs" }
     ],
     "dataPatches": []
   }
