@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "id": "StarterKits",
+  "name": "StarterKits",
+  "version": "1.0.0",
+  "description": "Starter kit customisation: spawns a configured set of items into storage containers as they are created.",
+  "authors": ["Christophe Roblin"],
+  "source": { "repo": "LiF-x/StarterKits", "commit": "3c74e646ac092bbf8bae508cff15cc02526bbfcc" },
+  "baseline": { "gameBuild": "sha256:d47ef6156423f1226b6d07a1f31f81d3aa94bc460cc1ac76bcf7d7ef9c305d4a", "steamBuildId": "11261643" },
+  "license": "GPL-3.0-only",
+  "distribution": "hostable",
+  "dependencies": ["LiF-x/ServerAutoloader"],
+  "loadOrderHint": 100,
+  "files": {
+    "overlay": [
+      { "src": "mod.cs",                "dest": "mods/StarterKits/mod.cs" },
+      { "src": "starterkitsTable.cs",   "dest": "mods/StarterKits/starterkitsTable.cs" }
+    ],
+    "dataPatches": []
+  }
+}
